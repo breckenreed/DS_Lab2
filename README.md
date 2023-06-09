@@ -30,6 +30,8 @@ Cтворюємо три контейнери Hazelcast та контейнер 
 
 
 3.Продемонструйте роботу Distributed Map
+
 <img width="580" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/9a2d32b8-3aa7-4821-b5aa-665c919390f9">
 
+<img width="520" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/ff556a02-3342-4daf-b335-33ad7a88b7a4">
 
