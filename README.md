@@ -76,13 +76,13 @@ backup memory має вдвічі більший розмір за entry memory:
 7. Продемонструйте роботу Distributed map with locks. <br />
 
  a-1) Запускаємо nolock_map.py в одному потоці, бачимо що результат передбачувано інкрементується з кожним разом: <br />
-<img width="524" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/e9c2e9f1-9a25-43d4-ad6a-1df5ba5bb0fe">
+<img width="524" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/e9c2e9f1-9a25-43d4-ad6a-1df5ba5bb0fe"> <br />
 
- а-2) Запускаємо nolock_map.py водночас у двох терміналах, результати починають неконтрольовано змінюватися, спостерігається data race. <br />
+ а-2) Запускаємо nolock_map.py (назва файлу мінялася в процесі роботи водночас у двох терміналах, результати починають неконтрольовано змінюватися, спостерігається data race. <br />
+<img width="666" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/efc2e8a5-c3c7-48a6-9ecf-19141a8e0311"> <br />
 
-В одному потоці бачимо одну відповідь (401), в іншому - іншу (420, друга операція була запущена під час виконання першої). <br />
- <img width="558" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/0ddfc17a-e1a9-4da9-bccd-3369b6de5f89"> <br />
- <img width="530" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/8b420f3d-faeb-40cf-ba38-185ded1524ad"> <br />
+
+
 
  б) Optimistic locking:  <br />
   При одночасному запуску двох opt_lock у нас виводиться один результат, крім того, Management Center фіксує наявність двох клієнтів:  <br />
