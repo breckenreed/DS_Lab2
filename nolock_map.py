@@ -4,19 +4,19 @@ import time
 if __name__ == "__main__":
     hz = hazelcast.HazelcastClient( 
         cluster_members=[
-        "172.24.0.2:5701",
-        "172.24.0.3:5701",
-        "172.24.0.4:5701"
+        "127.0.0.1:5701",
+        "127.0.0.1:5702",
+        "127.0.0.1:5703"
     ],
     lifecycle_listeners=[
-        lambda state: print("Event appeared in lifecycle: ", state),
+        lambda state: print("New event appeared in lifecycle: ", state),
     ])
 
-    map = hz.get_map("lab2_map")
+    map = hz.get_map("LAB2-NO_LOCK")
     key = "key"
 
     map.put_if_absent(key, 1)
-    for i in range(100):
+    for i in range(100): #reduced to save processing time 
         value = map.get(key).result()
         time.sleep(0.1)
         value+=1
