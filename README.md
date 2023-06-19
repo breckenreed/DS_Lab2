@@ -45,7 +45,7 @@ Cтворюємо три контейнери Hazelcast та контейнер 
 
  а-2) Запускаємо nolock_map.py водночас у двох потоках, результати починають неконтрольовано змінюватися, спостерігається data race. <br />
 
-В одному потоці бачимо одну відповідь, в іншому - іншу (друга операція була запущена під час виконання першої). <br />
+В одному потоці бачимо одну відповідь (401), в іншому - іншу (420, друга операція була запущена під час виконання першої). <br />
  <img width="524" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/85dbbb70-a6a2-491a-a6d1-8288d98fd090"> <br />
  <img width="558" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/0ddfc17a-e1a9-4da9-bccd-3369b6de5f89"> <br />
  <img width="530" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/8b420f3d-faeb-40cf-ba38-185ded1524ad"> <br />
