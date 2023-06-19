@@ -30,8 +30,25 @@ Cтворюємо три контейнери Hazelcast та контейнер 
 
 
 3.Продемонструйте роботу Distributed Map
+<img width="554" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/49295a9c-7ccc-4bda-8aeb-2ae5fe7b94d8">
 
-<img width="580" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/9a2d32b8-3aa7-4821-b5aa-665c919390f9">
+<img width="545" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/18e5aaca-8132-4c55-afd6-af904803bac8">
 
-<img width="520" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/ff556a02-3342-4daf-b335-33ad7a88b7a4">
+
+
+
+
+6. Продемонструйте роботу Distributed map with locks. <br />
+
+ a-1) Запускаємо nolock_map.py в одному потоці, бачимо що результат передбачувано інкрементується з кожним разом: <br />
+<img width="524" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/e9c2e9f1-9a25-43d4-ad6a-1df5ba5bb0fe">
+
+ а-2) Запускаємо nolock_map.py водночас у двох потоках, результати починають неконтрольовано змінюватися, спостерігається data race. <br />
+
+В одному потоці бачимо одну відповідь, в іншому - іншу (друга операція була запущена під час виконання першої). <br />
+ <img width="524" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/85dbbb70-a6a2-491a-a6d1-8288d98fd090"> <br />
+ <img width="558" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/0ddfc17a-e1a9-4da9-bccd-3369b6de5f89"> <br />
+ <img width="530" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/8b420f3d-faeb-40cf-ba38-185ded1524ad"> <br />
+
+
 
