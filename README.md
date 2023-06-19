@@ -1,6 +1,4 @@
-<img width="528" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/46aacfb6-60c5-42df-b4ee-74361b762211"><img width="486" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/908705ff-8197-4f7a-9b4b-266ec87d75fa">## DS_Lab2
-
-
+## DS_Lab2
 
 1. Встановити і налаштувати Hazelcast
 
@@ -61,9 +59,19 @@ Cтворюємо три контейнери Hazelcast та контейнер 
 <img width="1240" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/92d7a939-f4f2-412f-978f-8519bab59186">
 
 б) 2 <br />
-<img width="869" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/635e7577-6d54-4ec0-85f1-7a0f608aaa7c">
+<img width="869" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/635e7577-6d54-4ec0-85f1-7a0f608aaa7c"> <br />
 
+Зменшили кількість ітерацій до 100 щоб уникнути довгого завантаження даних: <br />
+<img width="1229" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/c80255a8-4f0e-4d54-b105-b7bc12e361c8"> <br />
 
+backup memory має вдвічі більший розмір за entry memory: <br />
+<img width="1223" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/794a1ac6-02be-4192-ba2d-f1b6ddeeb1e3"> <br />
+
+При вимкненні одної ноди реагує подібно до backup-counts=1:
+<img width="1227" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/cb9693ae-f7ee-44e6-a4ea-bc8501d5e612"> <br />
+
+Двох нод: 
+<img width="1249" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/ef69a068-9dd0-4def-875d-eec4eb13f3e8"> <br />
 
 7. Продемонструйте роботу Distributed map with locks. <br />
 
