@@ -51,10 +51,19 @@ Cтворюємо три контейнери Hazelcast та контейнер 
   Дістаємо конфіг файл із контейнера за допомогою cat /opt/hazelcast/config/hazelcast-docker.xml та міняємо backup-counts на <br />
 
 а) 0 <br />
+<img width="989" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/d6617529-eb3b-4906-a65a-e1a4887e0e3e">
+
+При зміні backup-count на 0 у всіх мемберах кластеру, запис карти за допомогою distributed-map.py відбувся набагато швидше і зайняв всього 20 секунд порівняно із записом із backup-count 1 (котрий тривав 40-50 хвилин)
+<img width="1237" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/e52277d5-9f42-4211-bab8-ca10c3f14feb">
+
+Втім, дані втрачаються при вимкненні нод:
+<img width="1238" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/493f6d53-4a5b-4d54-a036-c37424986f1c">
+<img width="1240" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/92d7a939-f4f2-412f-978f-8519bab59186">
 
 б) 2 <br />
+<img width="869" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/635e7577-6d54-4ec0-85f1-7a0f608aaa7c">
 
- 
+
 
 7. Продемонструйте роботу Distributed map with locks. <br />
 
