@@ -93,7 +93,10 @@ backup memory має вдвічі більший розмір за entry memory:
 
 
  в) Pessimistic locking:
+ Бачимо стабільний реузультат, хоч і продуктивність на порядок менша. Різниця в 1 присутня через те, що в одному з потоків спрацьовує функція ```put_if_absent(key, 1)```
 
+<img width="640" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/8ef21760-251f-40bc-aab1-c79ea79bde63">
+<img width="579" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/280f3311-ee1e-410c-8a14-e050a4f724f9">
 
 
 7. Налаштуйте Bounded queue
