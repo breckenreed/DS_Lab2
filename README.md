@@ -84,7 +84,12 @@ backup memory має вдвічі більший розмір за entry memory:
  <img width="558" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/0ddfc17a-e1a9-4da9-bccd-3369b6de5f89"> <br />
  <img width="530" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/8b420f3d-faeb-40cf-ba38-185ded1524ad"> <br />
 
- б) Optimistic locking:
+ б) Optimistic locking:  <br />
+  При одночасному запуску двох opt_lock у нас виводиться один результат, крім того, Management Center фіксує наявність двох клієнтів:  <br />
+  <img width="1232" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/de8717a7-379b-4178-8250-10f21113ff26">  <br />
+  <img width="731" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/b868489e-5b3a-433d-b689-9dba0b53a4c9">  <br />
+
+  
 
 
  в) Pessimistic locking:
