@@ -85,12 +85,11 @@ backup memory має вдвічі більший розмір за entry memory:
 
 
  б) Optimistic locking:  <br />
-  При одночасному запуску двох opt_lock у нас виводиться один результат, крім того, Management Center фіксує наявність двох клієнтів:  <br />
-  <img width="1232" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/de8717a7-379b-4178-8250-10f21113ff26">  <br />
-  <img width="731" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/b868489e-5b3a-433d-b689-9dba0b53a4c9">  <br />
+  При одночасному запуску двох opt_lock у нас виводиться один стійкий результат: <br />
+
+<img width="617" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/1f6bd3a6-1c11-407a-b8c6-56feeec84bfc"> <br />
 
   
-
 
  в) Pessimistic locking:
  Бачимо стабільний реузультат, хоч і продуктивність на порядок менша. Різниця в 1 присутня через те, що в одному з потоків спрацьовує функція ```put_if_absent(key, 1)```
