@@ -78,10 +78,8 @@ backup memory має вдвічі більший розмір за entry memory:
  a-1) Запускаємо nolock_map.py в одному потоці, бачимо що результат передбачувано інкрементується з кожним разом: <br />
 <img width="524" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/e9c2e9f1-9a25-43d4-ad6a-1df5ba5bb0fe"> <br />
 
- а-2) Запускаємо nolock_map.py (назва файлу мінялася в процесі роботи водночас у двох терміналах, результати починають неконтрольовано змінюватися, спостерігається data race. <br />
+ а-2) Запускаємо nolock_map.py (назва файлу мінялася в процесі виконання роботи) водночас у двох терміналах, результати починають неконтрольовано змінюватися, спостерігається data race. <br />
 <img width="666" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/efc2e8a5-c3c7-48a6-9ecf-19141a8e0311"> <br />
-
-
 
 
  б) Optimistic locking:  <br />
@@ -92,11 +90,39 @@ backup memory має вдвічі більший розмір за entry memory:
   
 
  в) Pessimistic locking:
- Бачимо стабільний реузультат, хоч і продуктивність на порядок менша. Різниця в 1 присутня через те, що в одному з потоків спрацьовує функція ```put_if_absent(key, 1)```
+ Бачимо стабільний реузультат, хоч і продуктивність на порядок менша. Різниця в 1 присутня через те, що в одному з потоків спрацьовує функція ```put_if_absent(key, 1)``` <br />
 
-<img width="640" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/8ef21760-251f-40bc-aab1-c79ea79bde63">
-<img width="579" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/280f3311-ee1e-410c-8a14-e050a4f724f9">
+<img width="640" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/8ef21760-251f-40bc-aab1-c79ea79bde63"> <br />
+<img width="579" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/280f3311-ee1e-410c-8a14-e050a4f724f9"> <br />
 
 
-7. Налаштуйте Bounded queue
+7. Налаштуйте Bounded queue <br />
 
+Встановлюємо максимальну величину черги у розмірі "13": <br />
+<img width="299" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/4919db98-bb26-47b9-a1ef-60251f0eff8e"> <br />
+
+Якщо одночасно запустити в одному терміналі запис, а в інший - читання, то бачимо, що при затримках sleep по 0.5 сума кількості елементів черги не перевищує 8 <br />
+<img width="1248" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/a99544a3-d898-49fc-ac5f-867b2b72ddab"> <br />
+
+<img width="473" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/6008900d-dd6b-4162-ba6f-6545a080e235"> <br />
+<img width="520" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/3603902a-d6da-4141-9dce-738c473d40aa"> <br />
+
+
+А) з однієї ноди (клієнта) йде запис, а на двох інших читання: <br />
+
+Якщо затримка читання є близькою до затримки запису, то читання з двох клієнтів призведе до того, що агрегована сума черги не буде зростати, адже читання відбуватиметься швидше за запис, а іноді - навіть швидше за вивід дебагу процесу запису принтом: <br />
+
+<img width="1263" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/61950202-2612-4820-827f-aadcff10c476"> <br />
+<img width="722" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/4864cc51-5332-47ed-bb4e-658aa2ac41f7"> <br />
+
+Б) перевірте яка буде поведінка на запис якщо відсутнє читання, і черга заповнена <br />
+
+Запис припиняється на досягненні max-size 13: <br />
+<img width="617" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/067c00ad-3fa9-4577-8c2e-7dfecf0da1fd"> <br />
+<img width="376" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/4f743083-e2aa-43df-9740-73486e8b4d27"> <br />
+Черга не приймає елементів на запис від жодних клієнтів до звільнення в ній місця <br />
+
+В) як будуть вичитуватись значення з черги якщо є декілька читачів  <br />
+Перший читач має затримку 2 секунди, другий 6 секунд. Отже, за замовчуванням, більшу частину черги зчитує клієнт із меншою затримкою <br />
+
+<img width="610" alt="image" src="https://github.com/breckenreed/DS_Lab2/assets/62158298/cc1a0222-18ef-4d94-a3b1-71634d202913"> <br />
