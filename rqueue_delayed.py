@@ -1,7 +1,8 @@
 import hazelcast
+import time
 
 if __name__ == "__main__":
-    hz = hazelcast.HazelcastClient( 
+    hz = hazelcast.HazelcastClient(
         cluster_members=[
         "127.0.0.1:5701",
         "127.0.0.1:5702",
@@ -10,7 +11,12 @@ if __name__ == "__main__":
     lifecycle_listeners=[
         lambda state: print("New event appeared in lifecycle: ", state),
     ])
-    map = hz.get_map("HZ-DIST_MAP2").blocking()
-    for i in range(100):
-        map.set(i, "value")
-    hz.shutdown()
+
+queue = hz.get_queue("QUEUE_ONE").blocking()
+
+for i in range(20):
+    value = queue.take()
+    print("Current value taken from READ queue (client2) : ", value)
+    time.sleep(3)
+
+hz.shutdown()
