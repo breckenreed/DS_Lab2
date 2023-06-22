@@ -27,3 +27,69 @@ docker run \
     --network hazelcast-network-1 \
     -p 8080:8080 hazelcast/management-center:latest-snapshot
 
+
+Editing config
+docker run --rm hazelcast/hazelcast:latest-snapshot \
+cat /opt/hazelcast/config/hazelcast-docker.xml \
+> hazelcast.xml
+
+Edit
+
+Start again
+docker run \
+    -d \
+    -v "$(pwd)"/hazelcast.xml:/opt/hazelcast/hazelcast.xml \
+    -e HAZELCAST_CONFIG=hazelcast.xml \
+    --name newfirstmem1 \
+    --network hazelcast-network-1 \
+    -e HZ_CLUSTERNAME=dev \
+    -p 5701:5701 hazelcast/hazelcast:latest-snapshot 
+
+
+docker run \
+    -d \
+    -v "$(pwd)"/hazelcast.xml:/opt/hazelcast/hazelcast.xml \
+    -e HAZELCAST_CONFIG=hazelcast.xml \
+    --name newsecondmem1 \
+    --network hazelcast-network-1 \
+    -e HZ_CLUSTERNAME=dev \
+    -p 5702:5701 hazelcast/hazelcast:latest-snapshot 
+
+docker run \
+    -d \
+    -v "$(pwd)"/hazelcast.xml:/opt/hazelcast/hazelcast.xml \
+    -e HAZELCAST_CONFIG=hazelcast.xml \
+    --name newthirdmem1 \
+    --network hazelcast-network-1 \
+    -e HZ_CLUSTERNAME=dev \
+    -p 5703:5701 hazelcast/hazelcast:latest-snapshot 
+
+
+
+
+docker run \
+    -d \
+    -v "$(pwd)"/hazelcast.xml:/opt/hazelcast/hazelcast.xml \
+    -e HAZELCAST_CONFIG=hazelcast.xml \
+    --name QUEUEONE \
+    --network hazelcast-network-1 \
+    -e HZ_CLUSTERNAME=dev \
+    -p 5701:5701 hazelcast/hazelcast:latest-snapshot 
+
+docker run \
+    -d \
+    -v "$(pwd)"/hazelcast.xml:/opt/hazelcast/hazelcast.xml \
+    -e HAZELCAST_CONFIG=hazelcast.xml \
+    --name QUEUETWO \
+    --network hazelcast-network-1 \
+    -e HZ_CLUSTERNAME=dev \
+    -p 5702:5701 hazelcast/hazelcast:latest-snapshot 
+
+docker run \
+    -d \
+    -v "$(pwd)"/hazelcast.xml:/opt/hazelcast/hazelcast.xml \
+    -e HAZELCAST_CONFIG=hazelcast.xml \
+    --name QUEUETHREE \
+    --network hazelcast-network-1 \
+    -e HZ_CLUSTERNAME=dev \
+    -p 5703:5701 hazelcast/hazelcast:latest-snapshot 
