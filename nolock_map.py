@@ -1,8 +1,9 @@
 import hazelcast
-import time
 
 if __name__ == "__main__":
-    hz = hazelcast.HazelcastClient( 
+
+    def write_no_lock():
+        client = hazelcast.HazelcastClient(
         cluster_members=[
         "127.0.0.1:5701",
         "127.0.0.1:5702",
@@ -12,16 +13,16 @@ if __name__ == "__main__":
         lambda state: print("New event appeared in lifecycle: ", state),
     ])
 
-    map = hz.get_map("LAB2-NO_LOCK")
-    key = "key"
+        no_lock_map = client.get_map("NO-LOCK-MAP")
+        key = "testing"
+        no_lock_map.put_if_absent(key, 1)
+        for i in range(100):
+            val = no_lock_map.get(key).result()
+            val += 1
+            no_lock_map.put(key, val)
 
-    map.put_if_absent(key, 1)
-    for i in range(100): #reduced to save processing time 
-        value = map.get(key).result()
-        time.sleep(0.1)
-        value+=1
-        map.put(key, value)
+        print("Finalized with result: ", no_lock_map.get(key).result())
+       
+        client.shutdown()
 
-    print("Finalized with result: ", map.get(key).result())
-
-    hz.shutdown()
+write_no_lock()
